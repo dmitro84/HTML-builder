@@ -46,8 +46,7 @@ const fileCopy = path.join(__dirname, './project-dist');
             readStreamHtmlComponents.on('end', () => outputHtml.write(data));
         })
         filesCss.reverse()
-        console.log(filesCss);
-
+        
         for (const file of filesCss) {
             if (file.isFile() && path.extname(file.name).slice(1) === 'css') {
                 readStreamCss = fs.createReadStream(path.join(path.join(__dirname, 'styles'), file.name), 'utf-8');
