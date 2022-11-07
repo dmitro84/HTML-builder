@@ -8,7 +8,7 @@ async function screenFolder() {
             if (file.isFile()) {
                 try {
                     const stats = await stat(path.join(__dirname, './secret-folder', file.name));
-                    console.log(path.basename(file.name, path.extname(file.name)), '-', path.extname(file.name).slice(1), '-', stats.size / 1000 + 'kb');
+                    console.log(path.basename(file.name, path.extname(file.name)), '-', path.extname(file.name).slice(1), '-', (stats.size / 1024).toFixed(3) + 'kb');
                 }
                 catch (error) {
                     console.log(error);
