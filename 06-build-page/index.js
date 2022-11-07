@@ -23,7 +23,6 @@ const fileCopy = path.join(__dirname, './project-dist');
         const filesHtml = await readdir(path.join(__dirname, 'components'), { withFileTypes: true });
         const outputCss = fs.createWriteStream(path.join(__dirname, 'project-dist', 'style.css'));
         const outputHtml = fs.createWriteStream(path.join(__dirname, 'project-dist', 'index.html'));
-        const readStreamHtmlTemplate = fs.createReadStream(path.join(fileCopy, 'index.html'), 'utf-8');
 
         fs.readFile(path.join(__dirname, 'template.html'), (err, dataFile) => {
             if (err) throw err;
@@ -46,7 +45,7 @@ const fileCopy = path.join(__dirname, './project-dist');
             readStreamHtmlComponents.on('end', () => outputHtml.write(data));
         })
         filesCss.reverse()
-        
+
         for (const file of filesCss) {
             if (file.isFile() && path.extname(file.name).slice(1) === 'css') {
                 readStreamCss = fs.createReadStream(path.join(path.join(__dirname, 'styles'), file.name), 'utf-8');
