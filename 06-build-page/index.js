@@ -49,7 +49,7 @@ const fileCopy = path.join(__dirname, './project-dist');
         for (const file of filesCss) {
             if (file.isFile() && path.extname(file.name).slice(1) === 'css') {
                 readStreamCss = fs.createReadStream(path.join(path.join(__dirname, 'styles'), file.name), 'utf-8');
-                readStreamCss.on('data', chunk => dataCss += chunk);
+                readStreamCss.on('data', chunk => dataCss += '\n' + chunk + '\n');
             }
         }
         readStreamCss.on('end', () => outputCss.write(dataCss));
