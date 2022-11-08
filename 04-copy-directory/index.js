@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const { readdir, mkdir, copyFile, rmdir, unlink } = require('fs/promises');
+const { readdir, mkdir, copyFile, unlink } = require('fs/promises');
 
 async function copyDir(dir) {
     const fileCopy = path.join(__dirname, './files-copy');
